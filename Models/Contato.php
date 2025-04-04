@@ -1,6 +1,6 @@
 <?php
 
-    class Contato {
+    class Contato implements JsonSerializable {
         private $id;
         private $nome;
         private $telefone;
@@ -27,6 +27,14 @@
 
         public function setTelefone($telefone) {
             $this->telefone = $telefone;
+        }
+
+        public function jsonSerialize() {
+            return [
+                "id" => $this->id,
+                "nome" => $this->nome,
+                "telefone" => $this->telefone
+            ];
         }
 
 }

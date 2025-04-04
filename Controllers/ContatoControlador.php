@@ -7,13 +7,15 @@
         public function salvar($contato) {
 
             try {
+
                 //Abrir conexão
                 $conexao = new Conexao();
                 $conn = $conexao->getConexao();
 
                 //Chamar o DAO e enviar parametros para o DAO
                 $contatoDAO = new ContatoDAO();
-                $contatoDAO->salvar($contato, $conn);
+                return $contatoDAO->salvar($contato, $conn);
+                
             } catch (Excetion $erro) {
                 throw $erro;
             }

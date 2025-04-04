@@ -7,8 +7,14 @@
     switch($acao) {
         case "salvarContato":
 
-            $nome = $_POST["nome"];
-            $telefone = $_POST["telefone"];
+            //$nome = $_POST["nome"];
+            //$telefone = $_POST["telefone"];
+            $json = file_get_contents("php://input");
+
+            $contatoDTO = json_decode($json);
+            
+            $nome = $contatoDTO->nome;
+            $telefone = $contatoDTO->telefone;
 
             $contato = new Contato();
             
@@ -17,8 +23,9 @@
 
             $contatoControlador = new ContatoControlador;
             try {
-                $contatoControlador->salvar($contato);
-                header("Location: ./View/formCadastrarContato.html");
+                $contato = $contatoControlador->salvar($contato);
+                echo json_encode($contato);
+                //header("Location: ./View/formCadastrarContato.html");
             } catch(Exception $erro) {
                 echo "Erro ao cadastrar contato!";
             }
