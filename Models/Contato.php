@@ -37,4 +37,10 @@
             ];
         }
 
+        public function contatoDTOParaContato($contatoDTO) {
+            $this->id = $contatoDTO->id;
+            $this->nome = $contatoDTO->nome;
+            $this->telefone = $contatoDTO->telefone;
+        }
+
 }
