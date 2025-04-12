@@ -29,6 +29,8 @@
             } catch(Exception $erro) {
                 echo "Erro ao cadastrar contato!";
             }
+            
+            break;
 
         case "editarContato":
 
@@ -45,11 +47,13 @@
 
                 $contatoControlador = new ContatoControlador;
             try {
-                $contato = $contatoControlador->editar($contato);
+                $contatoControlador->editar($contato);
                 echo json_encode($contato);
             } catch(Exception $erro) {
                 echo "Erro ao editar contato!";
             }
+
+            break;
 
         case "excluirContato":
 
@@ -68,6 +72,8 @@
                 echo "Erro ao editar contato!";
             }
 
+            break;
+
 
         case "buscarTodos":
             $contatoControlador = new ContatoControlador;
@@ -77,7 +83,8 @@
             } catch(Exception $erro) {
                 echo "Erro ao buscar contatos!";
             }
-            
+
+            break;
     }
 
 ?>
